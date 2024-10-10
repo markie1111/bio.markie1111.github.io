@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>lel</title>
+    <link rel="stylesheet" href="css/s.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="card">
+        <a href="https://cshmark.xyz">
+            <img draggable="false" ondragstart="return false" class="pfp" id="discord-pfp">
+        </a>
+        <h1 class="username" id="discord-username"></h1>
+        <p id="discord-status-text" style="color: rgb(233, 233, 233); margin-top: 2px;"></p>
+        <div class="s">
+            <a href="https://discord.com/users/1239317024086298678">discord</a> |
+            <a href="https://steamcommunity.com/id/cshmark">steam</a> |
+            <a href="https://soundcloud.com/baszam-ki-aszad">soundcloud</a> |
+            <a href="https://github.com/markie1111">github</a>
+        </div>
+    </div>
+
+    <script>
+        const discordUserID = '1239317024086298678';
+
+        async function updateDiscordInfo() {
+            try {
+                const response = await fetch(`https://api.lanyard.rest/v1/users/${discordUserID}`);
+                const data = await response.json();
+
+                if (data && data.success) {
+                    const { discord_user, discord_status } = data.data;
+
+                    document.getElementById('discord-pfp').src = `https://cdn.discordapp.com/avatars/${discord_user.id}/${discord_user.avatar}.png?size=512`;
+                    document.getElementById('discord-username').textContent = discord_user.username;
+
+                    const statusColors = {
+                        online: '#00ff04cc',
+                        idle: '#ffbf00cc',
+                        dnd: '#ff0000cc',
+                        offline: '#808080cc'
+                    };
+
+                    const statusText = {
+                        online: 'online',
+                        idle: 'idle',
+                        dnd: 'online',
+                        offline: 'offline'
+                    };
+
+                    const borderColor = statusColors[discord_status] || '#808080cc';
+                    const statusMessage = `I'm currently ${statusText[discord_status] || 'offline'} on discord`;
+
+                    document.getElementById('discord-pfp').style.borderColor = borderColor;
+                    document.getElementById('discord-status-text').textContent = statusMessage;
+                }
+            } catch (error) {
+                console.error('skill issue', error);
+            }
+        }
+
+        updateDiscordInfo();
+    </script>
+</body>
+</html>

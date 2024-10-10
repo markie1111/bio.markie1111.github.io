@@ -1,0 +1,68 @@
+@keyframes OHMYGODAAAAAAAAAAAAAAAAAAAAAOHMYFUCKINGGODAAAAAAMOMGETTHECAMERA {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: Montserrat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../imgs/bg.jpg');
+    user-select: none;
+    background-color: #0000003a;
+    background-blend-mode: overlay;
+    background-position: center;
+    background-size: cover;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(2px);
+    padding: 20px;
+    border-radius: 15px;
+    animation: OHMYGODAAAAAAAAAAAAAAAAAAAAAOHMYFUCKINGGODAAAAAAMOMGETTHECAMERA .5s ease-in;
+}
+
+.pfp {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+    border: solid 4px #ffffff;
+}
+
+.username {
+    color: white;
+    font-size: 30px;
+    font-weight: 300;
+    margin: 10px 0;
+}
+
+.s {
+    font-family: monospace;
+    font-size: 14px;
+    color: gray;
+}
+
+.s a {
+    color: #c3c3c3;
+    text-decoration: none;
+    margin: 0 5px;
+    transition: color .3s ease;
+}
+
+.s a:hover {
+    color: #f4f4f4;
+}
